@@ -35,10 +35,10 @@ public class ArticlesEntity {
     @Setter
     private String hashtag; // 해시태그
 
-    @ToString.Exclude //toString 제외
-    @OrderBy("id")
-    @OneToMany(mappedBy = "article",cascade = CascadeType.ALL)
-    private final Set<CommentEntity> comments = new LinkedHashSet<>();
+//    @ToString.Exclude //toString 제외
+//    @OrderBy("id")
+//    @OneToMany(mappedBy = "article",cascade = CascadeType.ALL)
+//    private final Set<CommentEntity> comments = new LinkedHashSet<>();
 
     @CreatedDate @Column(nullable = false)
     private LocalDateTime createdAt; // 생성일시

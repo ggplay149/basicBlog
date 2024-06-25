@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.1.100:3306/mydb?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    url: jdbc:mysql://localhost:3306/basicblogdb?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
     username: thirdDuck
     password: sh199211@@
   jpa:
@@ -11,3 +11,5 @@ spring:
     properties:
       hibernate:
         format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+
