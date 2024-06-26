@@ -1,15 +1,24 @@
+debug: false
+management.endpoints.web.exposure.include: "*"
+
+logging:
+  level:
+    com.threeDucks.basicBlog: debug
+    org.springframework.web.servlet: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace #인자값을 확인하기 위한 trace 레벨
+
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/basicblogdb?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/basicblogdb
     username: thirdDuck
     password: sh199211@@
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
+    defer-datasource-initialization: true
+    hibernate.ddl-auto: update
     show-sql: true
-    hibernate:
-      ddl-auto: update
     properties:
-      hibernate:
-        format_sql: true
-        dialect: org.hibernate.dialect.MySQLDialect
-
+      hibernate.format_sql: true
+      hibernate.default_batch_fetch_size: 100
+  h2.console.enabled: true
+  #sql.init.mode: always
