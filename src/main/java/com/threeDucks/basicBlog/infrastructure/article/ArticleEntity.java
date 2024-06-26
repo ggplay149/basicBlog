@@ -48,7 +48,7 @@ public class ArticleEntity {
     @CreatedDate @Column(nullable = false)
     private LocalDateTime createdAt;
 
-    @CreatedBy @Column(nullable = false)
+    @CreatedBy @Column(nullable = false, length = 100)
     private String createdBy;
 
     @LastModifiedDate @Column(nullable = false)
