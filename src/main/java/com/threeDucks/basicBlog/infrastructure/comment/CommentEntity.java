@@ -1,5 +1,6 @@
 package com.threeDucks.basicBlog.infrastructure.comment;
 
+import com.threeDucks.basicBlog.infrastructure.AuditingFields;
 import com.threeDucks.basicBlog.infrastructure.article.ArticleEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -22,7 +23,7 @@ import java.util.Objects;
 })
 @EntityListeners(AuditingEntityListener.class)
 @Entity
-public class CommentEntity {
+public class CommentEntity extends AuditingFields {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,18 +35,6 @@ public class CommentEntity {
 
     @Setter @Column(nullable = false, length = 500)
     private String content;
-
-    @CreatedDate @Column(nullable = false)
-    private LocalDateTime createdAt;
-
-    @CreatedBy @Column(nullable = false, length = 100)
-    private String createdBy;
-
-    @LastModifiedDate @Column(nullable = false)
-    private LocalDateTime modifiedAt;
-
-    @LastModifiedBy
-    @Column(nullable = false, length = 100) private String modifiedBy;
 
 
     private CommentEntity(ArticleEntity articleEntity, String content) {

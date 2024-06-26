@@ -1,5 +1,6 @@
 package com.threeDucks.basicBlog.infrastructure.article;
 
+import com.threeDucks.basicBlog.infrastructure.AuditingFields;
 import com.threeDucks.basicBlog.infrastructure.comment.CommentEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -25,7 +26,7 @@ import java.util.Set;
 })
 @EntityListeners(AuditingEntityListener.class)
 @Entity
-public class ArticleEntity {
+public class ArticleEntity extends AuditingFields {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,17 +46,6 @@ public class ArticleEntity {
     @OneToMany(mappedBy = "articleEntity", cascade = CascadeType.ALL)
     private final Set<CommentEntity> comments = new LinkedHashSet<>();
 
-    @CreatedDate @Column(nullable = false)
-    private LocalDateTime createdAt;
-
-    @CreatedBy @Column(nullable = false, length = 100)
-    private String createdBy;
-
-    @LastModifiedDate @Column(nullable = false)
-    private LocalDateTime modifiedAt;
-
-    @LastModifiedBy @Column(nullable = false)
-    private String modifiedBy;
 
     private ArticleEntity(String title, String content, String hashtag){
         this.title = title;
